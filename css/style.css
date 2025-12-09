@@ -1,36 +1,56 @@
-
-/* Google Material 3 Inspired Theme for JellyGun */
+/* Google Material 3 Inspired Theme for JellyGun (Gray/Baby Blue Hybrid) */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap');
 
 :root {
-    /* Google Blue & Material Palette */
-    --primary: #1a73e8;
-    --primary-container: #d2e3fc;
-    --on-primary: #ffffff;
+    /* 1. GRİ/MAVİ HİBRİT M3 RENK PALETİ */
     
-    --secondary: #5f6368;
-    --surface: #ffffff;
-    --surface-container: #f1f3f4; /* Google Light Grey Background */
-    --surface-variant: #e0e3e7; /* Borders/Separators */
-    
-    --text-main: #202124; /* Google Dark Grey */
-    --text-medium: #5f6368;
-    
-    --success: #1e8e3e;
-    --code-bg: #282c34;
-    
-    /* Spacing & Radius */
+    /* Bebek Mavisi Vurgu */
+    --color-primary: #006FB4; /* Orta Koyu Mavi */
+    --color-on-primary: #FFFFFF;
+    --color-primary-container: #C9E5FF; /* Bebek Mavisi (Vurgu Arka Planı) */
+    --color-on-primary-container: #001F3B;
+
+    --color-secondary: #5F6368; 
+    --color-on-secondary: #FFFFFF;
+
+    /* Gri Yüzeyler (Beyaz yerine hafif gri/mavi tonları) */
+    --color-surface: #F7F9FC; /* Sayfa Arka Planı (Çok Açık Gri/Mavi) */
+    --color-surface-container-low: #EBEFF4; /* Element Arka Planı 1 (Hafif Gri) */
+    --color-surface-container-high: #DDE3EB; /* Element Arka Planı 2 (Card Background) */
+    --color-surface-variant: #C9D0D8; /* Sınırlar/Ayırıcılar */
+
+    --color-outline: #8C9199;
+    --color-on-surface: #1A1C1E; /* Ana Yazı Rengi */
+    --color-on-surface-variant: #43474E; /* İkincil Yazı/Orta Gri */
+
+    --color-success: #1E8E3E; 
+    --color-code-bg: #282C34; 
+
+    /* 2. TIPOGRAFI VE YÜKSEKLİK */
+    --font-heading: 'Inter', sans-serif;
+    --font-body: 'Inter', sans-serif;
+    --font-code: 'Fira Code', monospace;
+
+    /* 3. ARALIK & YUVARLAKLIK */
+    --spacing-xs: 8px;
+    --spacing-sm: 12px;
+    --spacing-md: 24px;
+    --spacing-lg: 48px;
+
     --radius-sm: 8px;
-    --radius-md: 16px;
-    --radius-lg: 28px; /* Material 3 Card Radius */
-    --radius-pill: 999px; /* For buttons */
-    
-    --shadow-sm: 0 1px 2px 0 rgba(60,64,67,0.3), 0 1px 3px 1px rgba(60,64,67,0.15);
-    --shadow-md: 0 4px 8px 3px rgba(60,64,67,0.15);
-    --shadow-float: 0 6px 10px 4px rgba(60,64,67,0.15);
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --radius-xl: 28px;
+    --radius-pill: 999px;
+
+    /* 4. GÖLGELER (Elevation) */
+    --elevation-1: 0px 1px 3px 1px rgba(0, 0, 0, 0.10), 0px 1px 2px 0px rgba(0, 0, 0, 0.20);
+    --elevation-2: 0px 2px 4px 2px rgba(0, 0, 0, 0.08), 0px 4px 12px 0px rgba(0, 0, 0, 0.08);
     
     --nav-height: 64px;
 }
+
+/* --- Global ve Temel Stiller --- */
 
 * {
     margin: 0;
@@ -39,88 +59,114 @@
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: var(--surface);
-    color: var(--text-main);
+    font-family: var(--font-body);
+    /* Gri Arka Plan */
+    background-color: var(--color-surface); 
+    color: var(--color-on-surface);
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s, color 0.3s;
 }
 
 /* Layout Utilities */
 .container {
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
-    padding: 0 24px;
+    padding: 0 var(--spacing-md);
 }
 
-/* Typography */
+section {
+    padding: var(--spacing-lg) 0;
+}
+
+/* --- Tipografi --- */
+
 h1, h2, h3 {
-    color: var(--text-main);
-    font-weight: 700; /* Google uses slightly bolder headings now */
-    letter-spacing: -0.02em;
+    font-family: var(--font-heading);
+    color: var(--color-on-surface);
+    font-weight: 700;
+    letter-spacing: -0.01em;
 }
 
-h1 { font-size: 3.5rem; line-height: 1.1; margin-bottom: 24px; }
-h2 { font-size: 2.25rem; margin-bottom: 48px; text-align: center; }
-p { color: var(--text-medium); font-size: 1.125rem; }
+h1 { 
+    font-size: clamp(2.5rem, 6vw + 1rem, 4.5rem); 
+    line-height: 1.1; 
+    margin-bottom: var(--spacing-md); 
+}
+h2 { 
+    font-size: clamp(1.75rem, 4vw + 0.5rem, 2.75rem); 
+    margin-bottom: var(--spacing-lg); 
+    text-align: center; 
+}
+p { 
+    color: var(--color-on-surface-variant); 
+    font-size: 1.125rem; 
+}
 
-/* Navbar (Google Style: Clean, Sticky, Subtle Shadow) */
+/* --- Navbar --- */
+
 .navbar {
-    position: fixed;
+    position: sticky; 
     top: 0;
-    left: 0;
     width: 100%;
     height: var(--nav-height);
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
+    background: var(--color-surface); /* Gri Arka Plan */
     z-index: 1000;
-    border-bottom: 1px solid var(--surface-variant);
+    box-shadow: var(--elevation-1); 
     display: flex;
     align-items: center;
+    transition: box-shadow 0.3s, background 0.3s;
 }
 
 .navbar .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
 }
 
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--text-main);
+    color: var(--color-on-surface);
     display: flex;
     align-items: center;
     gap: 8px;
     text-decoration: none;
 }
 
-.logo span { color: var(--primary); }
+/* Bebek Mavisi Vurgu */
+.logo i { color: var(--color-primary); } 
+.logo span { color: var(--color-on-surface); }
 
-.nav-links { display: flex; gap: 32px; align-items: center; }
+.nav-links { display: flex; gap: var(--spacing-md); align-items: center; }
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text-medium);
+    color: var(--color-on-surface-variant);
     font-weight: 500;
     font-size: 0.95rem;
     transition: color 0.2s;
+    outline: none; 
 }
 
-.nav-links a:hover, .nav-links a.active { color: var(--primary); }
+.nav-links a:hover, 
+.nav-links a.active,
+.nav-links a:focus-visible { 
+    color: var(--color-primary); /* Hover'da Mavi Vurgu */
+}
 
 .github-icon {
-    font-size: 1.4rem;
-    color: var(--text-main) !important;
+    font-size: 1.5rem;
+    color: var(--color-on-surface) !important;
 }
 
-/* Buttons (Material 3 Pills) */
+/* --- Butonlar (M3 Stili) --- */
+
 .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    padding: 12px 28px;
+    padding: 12px 24px;
     border-radius: var(--radius-pill);
     font-weight: 600;
     font-size: 1rem;
@@ -128,197 +174,213 @@ p { color: var(--text-medium); font-size: 1.125rem; }
     transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     cursor: pointer;
     border: none;
+    outline: none;
 }
 
+/* Filled Button (Mavi) */
 .btn.primary {
-    background-color: var(--primary);
-    color: var(--on-primary);
-    box-shadow: 0 1px 3px rgba(26, 115, 232, 0.3);
+    background-color: var(--color-primary);
+    color: var(--color-on-primary);
+    box-shadow: var(--elevation-1);
 }
 
 .btn.primary:hover {
-    background-color: #1557b0;
-    box-shadow: 0 4px 8px rgba(26, 115, 232, 0.4);
+    background-color: #005A93; /* Daha koyu mavi */
+    box-shadow: var(--elevation-2);
     transform: translateY(-1px);
 }
 
+/* Outlined Button (Gri zemin, Mavi kontur ve yazı) */
 .btn.secondary {
     background-color: transparent;
-    color: var(--primary);
-    border: 1px solid var(--surface-variant);
+    color: var(--color-primary);
+    border: 1px solid var(--color-outline);
 }
 
 .btn.secondary:hover {
-    background-color: var(--primary-container);
-    border-color: var(--primary-container);
+    background-color: var(--color-primary-container); /* Bebek mavisi hover */
+    border-color: var(--color-primary);
 }
 
-/* Hero Section */
+/* --- Hero Section --- */
+
 .hero {
-    padding: 160px 0 100px;
+    padding: 160px 0 var(--spacing-lg);
     text-align: center;
-    background: radial-gradient(circle at 50% 0%, var(--primary-container) 0%, rgba(255,255,255,0) 60%);
+    /* Bebek mavisi ve gri tonların karışımı arka plan */
+    background: radial-gradient(circle at 50% 0%, var(--color-primary-container) 0%, var(--color-surface) 60%);
+    transition: background 0.3s;
 }
 
 .hero-badge {
-    display: inline-block;
-    background: var(--surface);
-    color: var(--primary);
+    display: inline-flex;
+    background: var(--color-surface-container-low);
+    color: var(--color-primary);
     padding: 6px 16px;
     border-radius: var(--radius-pill);
-    font-size: 0.85rem;
+    font-size: 0.875rem;
     font-weight: 600;
-    margin-bottom: 24px;
-    border: 1px solid var(--primary-container);
-    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    margin-bottom: var(--spacing-sm);
+    border: 1px solid var(--color-surface-variant);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.05);
 }
 
 .hero p {
-    max-width: 600px;
-    margin: 0 auto 32px;
+    max-width: 700px;
+    margin: 0 auto var(--spacing-md);
+    font-size: 1.25rem;
 }
 
 .cta-group {
     display: flex;
-    gap: 16px;
+    gap: var(--spacing-sm);
     justify-content: center;
 }
 
-/* Features (Cards) */
+/* --- Özellikler (Kartlar) --- */
+
 .features { padding: 80px 0; }
 .features-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-    gap: 24px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); 
+    gap: var(--spacing-md);
 }
 
 .feature-card {
-    background: var(--surface-container);
-    border-radius: var(--radius-lg); /* Rounded Material 3 Look */
-    padding: 32px;
-    transition: transform 0.3s ease, background-color 0.3s ease;
-    border: 1px solid transparent;
+    background: var(--color-surface-container-low); /* Hafif Gri Arka Plan */
+    border-radius: var(--radius-xl); 
+    padding: var(--spacing-md);
+    transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s;
+    border: 1px solid var(--color-surface-variant);
+    box-shadow: var(--elevation-1);
 }
 
 .feature-card:hover {
-    background: #e8eaed;
-    transform: translateY(-4px);
+    background: var(--color-surface-container-high); /* Daha koyu gri hover */
+    transform: translateY(-2px);
+    box-shadow: var(--elevation-2);
 }
 
 .feature-icon-wrapper {
-    width: 48px;
-    height: 48px;
-    background: var(--surface);
-    border-radius: 12px;
+    width: 56px;
+    height: 56px;
+    background: var(--color-primary-container); /* Bebek Mavisi Arka Plan */
+    border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
     margin-bottom: 20px;
-    color: var(--primary);
-    font-size: 1.25rem;
+    color: var(--color-on-primary-container);
+    font-size: 1.75rem;
 }
 
-.feature-card h3 { font-size: 1.25rem; margin-bottom: 12px; }
-.feature-card p { font-size: 1rem; color: var(--text-medium); margin: 0; }
+.feature-card h3 { font-size: 1.5rem; margin-bottom: 12px; }
+.feature-card p { font-size: 1rem; color: var(--color-on-surface-variant); margin: 0; }
 
-/* Code Showcase (Mac Terminal Style) */
+/* --- Code Showcase --- */
+
 .examples-section {
     padding: 80px 0;
-    background-color: #fff;
+    background-color: var(--color-surface-container-high);
 }
 
 .code-window {
-    background: var(--code-bg);
-    border-radius: 12px;
-    box-shadow: var(--shadow-float);
+    background: var(--color-code-bg);
+    border-radius: var(--radius-lg);
+    box-shadow: 0 6px 10px 4px rgba(0, 0, 0, 0.15); /* Eski shadow-float */
     overflow: hidden;
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
-    font-family: 'Fira Code', monospace;
+    font-family: var(--font-code);
 }
 
 .window-header {
-    background: #21252b;
-    padding: 12px 16px;
+    background: #363a43; 
+    padding: 12px var(--spacing-md);
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
 .dot { width: 12px; height: 12px; border-radius: 50%; }
-.dot.red { background: #ff5f56; }
-.dot.yellow { background: #ffbd2e; }
-.dot.green { background: #27c93f; }
+.dot.red { background: #FF6B6B; }
+.dot.yellow { background: #FFD93D; }
+.dot.green { background: #6BCB77; }
 .window-title { 
     margin-left: 12px; 
-    color: #9da5b4; 
-    font-size: 0.8rem; 
+    color: #c9ccd0; 
+    font-size: 0.85rem; 
+    font-weight: 500;
 }
 
 .code-content {
-    padding: 24px;
-    color: #abb2bf;
+    padding: var(--spacing-md);
+    color: #e0e6f1;
     overflow-x: auto;
 }
 
 .code-content pre { margin: 0; }
 .hljs { background: transparent !important; padding: 0 !important; }
 
-/* Footer */
+/* --- Footer --- */
+
 footer {
-    background: var(--surface-container);
-    padding: 60px 0 30px;
-    margin-top: 80px;
-    border-top: 1px solid var(--surface-variant);
+    background: var(--color-surface-container-low); /* Hafif Gri Arka Plan */
+    padding: 60px 0 var(--spacing-md);
+    margin-top: var(--spacing-lg);
+    border-top: 1px solid var(--color-surface-variant);
+    transition: background 0.3s;
 }
 
 .footer-content {
     display: grid;
-    grid-template-columns: 2fr 1fr 1fr;
-    gap: 48px;
-    margin-bottom: 48px;
+    grid-template-columns: 2fr 1fr 1fr; 
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
 }
 
-.footer-brand h3 { font-size: 1.5rem; margin-bottom: 16px; }
-.footer-links h4 { font-size: 0.9rem; text-transform: uppercase; color: var(--text-medium); margin-bottom: 20px; letter-spacing: 0.05em; }
+.footer-links h4 { 
+    font-size: 0.85rem; 
+    text-transform: uppercase; 
+    color: var(--color-on-surface-variant); 
+    margin-bottom: 16px; 
+    letter-spacing: 0.08em; 
+}
 .footer-links ul { list-style: none; }
-.footer-links li { margin-bottom: 12px; }
-.footer-links a { color: var(--text-main); text-decoration: none; font-size: 0.95rem; }
-.footer-links a:hover { color: var(--primary); text-decoration: underline; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a { 
+    color: var(--color-on-surface); 
+    text-decoration: none; 
+    font-size: 0.95rem; 
+    transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--color-primary); text-decoration: none; }
 
 .footer-bottom {
     text-align: center;
-    color: var(--text-medium);
+    color: var(--color-on-surface-variant);
     font-size: 0.9rem;
-    padding-top: 24px;
-    border-top: 1px solid #dcdfe2;
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-surface-variant);
 }
 
-/* Mobile */
-@media (max-width: 768px) {
-    h1 { font-size: 2.5rem; }
-    .hero { padding: 120px 0 60px; }
-    .footer-content { grid-template-columns: 1fr; gap: 32px; }
-    .nav-links { display: none; } /* Add JS hamburger toggle later */
-    .navbar .hamburger { display: block; }
-}
-/* Gradient Text Effect */
+/* --- Ekstra Etkileşim ve Efektler --- */
+
 .gradient-text {
+    /* Bebek Mavisi Gradien */
     background: linear-gradient(135deg, var(--color-primary) 0%, #8AB4F8 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent; 
     background-clip: text;
 }
 
-/* Ambient Glow (Background Blob) */
 .ambient-glow {
-    position: fixed;
     top: -10%;
     left: 50%;
     transform: translateX(-50%);
     width: 600px;
     height: 600px;
-    background: radial-gradient(circle, var(--color-primary-container) 0%, rgba(255,255,255,0) 70%);
+    background: radial-gradient(circle, var(--color-primary-container) 0%, rgba(255,255,255,0) 70%); /* Bebek Mavisi Glow */
     opacity: 0.6;
     z-index: -1;
     pointer-events: none;
@@ -339,6 +401,7 @@ footer {
     font-weight: 600;
 }
 
+/* Durum çipleri kontrast için sabit kalsın */
 .status-chip.live {
     background-color: #e6f4ea;
     color: var(--color-success);
@@ -383,16 +446,46 @@ footer {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Mobile Hamburger Fix */
-.hamburger {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: var(--color-on-surface);
-    cursor: pointer;
+/* --- Mobil (Responsive) --- */
+@media (max-width: 1024px) {
+    .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 768px) {
-    .hamburger { display: block; }
+    .container { padding: 0 1rem; } 
+    h1 { font-size: 2.5rem; }
+    h2 { text-align: left; margin-bottom: var(--spacing-md); }
+    .hero { padding: 120px 0 60px; }
+    .cta-group { flex-direction: column; gap: var(--spacing-xs); }
+    
+    .nav-links { 
+        position: absolute;
+        top: var(--nav-height);
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        background: var(--color-surface);
+        padding: var(--spacing-md) 0;
+        border-top: 1px solid var(--color-surface-variant);
+        display: none; 
+    }
+    .nav-links.is-open {
+        display: flex;
+    }
+    
+    .hamburger {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 1.5rem;
+        color: var(--color-on-surface);
+        cursor: pointer;
+    }
+    
+    .footer-content { 
+        grid-template-columns: 1fr; 
+        gap: var(--spacing-md); 
+    }
 }
