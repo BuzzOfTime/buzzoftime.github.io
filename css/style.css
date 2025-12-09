@@ -302,3 +302,97 @@ footer {
     .nav-links { display: none; } /* Add JS hamburger toggle later */
     .navbar .hamburger { display: block; }
 }
+/* Gradient Text Effect */
+.gradient-text {
+    background: linear-gradient(135deg, var(--color-primary) 0%, #8AB4F8 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* Ambient Glow (Background Blob) */
+.ambient-glow {
+    position: fixed;
+    top: -10%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, var(--color-primary-container) 0%, rgba(255,255,255,0) 70%);
+    opacity: 0.6;
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(60px);
+}
+
+/* Card Improvements */
+.card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.status-chip {
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: var(--radius-pill);
+    font-weight: 600;
+}
+
+.status-chip.live {
+    background-color: #e6f4ea;
+    color: var(--color-success);
+}
+
+.status-chip.dev {
+    background-color: #fef7e0;
+    color: #b06000;
+}
+
+.card-meta {
+    display: flex;
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.card-meta span {
+    font-size: 0.85rem;
+    color: var(--color-on-surface-variant);
+    background: var(--color-surface);
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--color-surface-variant);
+}
+
+.full-width {
+    width: 100%;
+}
+
+/* Simple Animations */
+.fade-in-up {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.delay-1 { animation-delay: 0.1s; }
+.delay-2 { animation-delay: 0.2s; }
+.delay-3 { animation-delay: 0.3s; }
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Hamburger Fix */
+.hamburger {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--color-on-surface);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .hamburger { display: block; }
+}
