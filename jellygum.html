@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jellygum - Modern Programlama Dili</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-bolt" style="color: var(--primary);"></i>
+                Jellygum
+            </a>
+            
+            <div class="nav-links">
+                <a href="#ozellikler">Özellikler</a>
+                <a href="examples.html">Örnekler</a>
+                <a href="docs.html">Dokümantasyon</a>
+                <a href="https://github.com/buzzoftime/jellygum" target="_blank">Repo</a>
+                <a href="ide.html">IDE</a>
+                <a href="https://github.com/buzzoftime/jellygum" target="_blank" class="github-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="examples.html" class="btn primary" style="padding: 8px 20px; font-size: 0.9rem;">Örnekleri İncele</a>
+            </div>
+            
+            <div class="hamburger" style="display:none; cursor: pointer;">
+                <i class="fa-solid fa-bars" style="font-size: 1.5rem;"></i>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <div class="hero-badge">
+                <i class="fa-solid fa-flask"></i> Sürüm: v0.8 BETA
+            </div>
+            <h1>Web ve Sistem İçin<br><span style="color: var(--primary);">Sade & Güçlü</span> Bir Dil</h1>
+            <p>Jellygum, karmaşadan uzak, tip güvenliğine önem veren ve doğrudan makine koduna derlenen yeni nesil bir programlama dilidir.</p>
+            
+            <div class="cta-group">
+                <a href="examples.html" class="btn primary">Dili Keşfet</a>
+                <a href="https://github.com/buzzoftime/jellygum" target="_blank" class="btn secondary">
+                    <i class="fab fa-github" style="margin-right: 8px;"></i> GitHub
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <section class="examples-section">
+        <div class="container">
+            <div class="code-window">
+                <div class="window-header">
+                    <div class="dot red"></div>
+                    <div class="dot yellow"></div>
+                    <div class="dot green"></div>
+                    <div class="window-title">main.jg — Jellygum</div>
+                </div>
+                <div class="code-content">
+<pre><code class="language-rust">fn main() {
+    let n: int = 5;
+    let sonuc: int = 1;
+    
+    // Faktoriyel Hesaplama
+    while n > 0 {
+        sonuc = sonuc * n;
+        n = n - 1;
+    }
+    
+    print_str("5 Faktoriyel Sonucu:");
+    print(sonuc);
+}</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ozellikler" class="features">
+        <div class="container">
+            <h2>Dilin Temel Özellikleri</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fa-solid fa-check-double"></i>
+                    </div>
+                    <h3>Tip Güvenliği</h3>
+                    <p>Değişkenlerin türleri (int, str, bool) bellidir. Hataları kod yazarken önlersiniz.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fa-solid fa-feather"></i>
+                    </div>
+                    <h3>Sade Sözdizimi</h3>
+                    <p>Gereksiz karmaşa yok. Okunabilir fonksiyonlar, net döngüler ve anlaşılır koşul yapıları.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon-wrapper">
+                        <i class="fa-solid fa-microchip"></i>
+                    </div>
+                    <h3>Yerel Performans</h3>
+                    <p>Kodlarınız doğrudan çalıştırılabilir dosyalara dönüştürülür, yüksek performansla çalışır.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <a href="#" class="logo" style="margin-bottom: 15px; display:inline-flex;">
+                        <i class="fa-solid fa-bolt" style="color: var(--primary);"></i> Jellygum
+                    </a>
+                    <p>Sade, hızlı ve güçlü programlama deneyimi.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Keşfet</h4>
+                    <ul>
+                        <li><a href="examples.html">Örnek Kodlar</a></li>
+                        <li><a href="docs.html">Dokümantasyon</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Bağlantılar</h4>
+                    <ul>
+                        <li><a href="https://github.com/buzzoftime/jellygum" target="_blank">GitHub</a></li>
+                        <li><a href="#">Discord</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Jellygum Project. v0.8 Beta.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

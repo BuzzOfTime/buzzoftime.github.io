@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Örnekler - Jellygum</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/atom-one-dark.min.css">
+    <style>
+        .examples-header { padding: 100px 0 50px; text-align: center; }
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            padding: 40px 0 80px;
+        }
+        .example-card-syntax {
+            background: var(--surface-container);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow-sm);
+            border: 1px solid transparent;
+            transition: transform 0.2s;
+        }
+        .example-card-syntax:hover { transform: translateY(-5px); }
+        .example-card-syntax h3 { font-size: 1.4rem; margin-bottom: 15px; color: var(--primary); }
+        .code-block-wrapper {
+            background: var(--code-bg);
+            border-radius: var(--radius-sm);
+            padding: 20px;
+            overflow-x: auto;
+            margin-top: 15px;
+            font-family: 'Fira Code', monospace;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fa-solid fa-bolt" style="color: var(--primary);"></i> Jellygum
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Ana Sayfa</a>
+                <a href="#" class="active">Örnekler</a>
+                <a href="https://github.com/buzzoftime/jellygum" target="_blank" class="github-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="examples-header">
+        <div class="container">
+            <h1>Jellygum Kod Örnekleri</h1>
+            <p>Dilin yapısını ve kullanımını gösteren temel örnekler.</p>
+        </div>
+    </header>
+
+    <section class="examples-content">
+        <div class="container">
+            <div class="examples-grid">
+                
+                <div class="example-card-syntax">
+                    <h3>Değişkenler</h3>
+                    <p>Değişkenler <code>let</code> ile tanımlanır ve tür belirtmek (int, str, bool) zorunludur.</p>
+                    <div class="code-block-wrapper">
+                        <pre><code class="language-rust">let x: int = 42;
+let isim: str = "Jellygum";
+let aktif: bool = true;</code></pre>
+                    </div>
+                </div>
+
+                <div class="example-card-syntax">
+                    <h3>Ekrana Yazdırma</h3>
+                    <p>Sayılar için <code>print()</code>, yazılar için <code>print_str()</code> fonksiyonları kullanılır.</p>
+                    <div class="code-block-wrapper">
+                        <pre><code class="language-rust">print_str("Merhaba Dünya!");
+print(100);</code></pre>
+                    </div>
+                </div>
+
+                <div class="example-card-syntax">
+                    <h3>Fonksiyonlar</h3>
+                    <p>Fonksiyonlar <code>fn</code> anahtar kelimesiyle başlar. Dönüş tipi <code>-></code> ile belirtilir.</p>
+                    <div class="code-block-wrapper">
+                        <pre><code class="language-rust">fn topla(a: int, b: int) -> int {
+    return a + b;
+}
+
+fn selamla() {
+    print_str("Selam!");
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="example-card-syntax">
+                    <h3>Koşul Yapıları (If / Else)</h3>
+                    <p>Koşul parantezleri zorunlu değildir ancak bloklar için süslü parantez <code>{}</code> gereklidir.</p>
+                    <div class="code-block-wrapper">
+                        <pre><code class="language-rust">let not: int = 85;
+
+if not > 50 {
+    print_str("Gectin!");
+} else {
+    print_str("Kaldin.");
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="example-card-syntax">
+                    <h3>Döngüler (While)</h3>
+                    <p>Belirli bir koşul sağlandığı sürece çalışan döngü yapısı.</p>
+                    <div class="code-block-wrapper">
+                        <pre><code class="language-rust">let i: int = 0;
+
+while i < 5 {
+    print(i);
+    i = i + 1;
+}</code></pre>
+                    </div>
+                </div>
+
+                <div class="example-card-syntax" style="border: 1px solid var(--primary);">
+                    <h3>🚀 Örnek Program: Faktöriyel</h3>
+                    <p>Öğrendiğimiz yapıların bir arada kullanıldığı tam bir program örneği.</p>
+                    <div class="code-block-wrapper">
+                        <pre><code class="language-rust">fn main() {
+    let n: int = 5;
+    let sonuc: int = 1;
+    
+    while n > 0 {
+        sonuc = sonuc * n;
+        n = n - 1;
+    }
+    
+    print_str("5 Faktoriyel:");
+    print(sonuc);
+}</code></pre>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container" style="text-align: center;">
+            <p>&copy; 2025 Jellygum Project. v0.8 Beta.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <script>hljs.highlightAll();</script>
+</body>
+</html>
